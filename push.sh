@@ -2,8 +2,12 @@ now=$(date "+%Y-%m-%d")
 echo "-------------------------------------------"
 echo "Starting add-commit-pull-push..."
 echo "-------------------------------------------"
-git add -A && git commit -m "$now" && git pull && git push
+git add -A 
 echo "-------------------------------------------"
-echo "完事儿"
+git commit -m "$now" 
+echo "-------------------------------------------"
+git pull && git push
+echo "-------------------------------------------"
+echo "Finished ! "
 echo "-------------------------------------------"
 
