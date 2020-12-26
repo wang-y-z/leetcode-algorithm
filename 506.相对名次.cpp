@@ -30,7 +30,7 @@
 
 //     }
 // };
-//代做，看清题目最关键；这波首先看错题了，血亏
+//待做，看清题目最关键；这波首先看错题了，血亏
 class Solution {
 public:
     vector<string> findRelativeRanks(vector<int>& nums) {
