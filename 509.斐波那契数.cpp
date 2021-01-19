@@ -30,18 +30,28 @@ public:
     // }
 
     //动规——其实不算，因为没有转移状态
+    // int fib( int n){
+    //     if(n < 1 ) return 0;
+    //     if(n==1||n==2) return 1;
+    //     vector<int> dp(n+1,0);
+    //     dp[1] = dp[2] = 1;
+    //     for(int i = 3 ; i <= n ; i++){
+    //         dp[i] = dp[i-1] + dp[i-2];
+    //     }
+    //     return dp[n];
+    // }
+    //进一步将有限的三个状态用三个Int来存储——状态压缩；减少空间消耗；
     int fib( int n){
         if(n < 1 ) return 0;
         if(n==1||n==2) return 1;
-        vector<int> dp(n+1,0);
-        dp[1] = dp[2] = 1;
+        int a = 1, b = 1 , c ;
         for(int i = 3 ; i <= n ; i++){
-            dp[i] = dp[i-1] + dp[i-2];
+            c = a + b ;
+            a = b;
+            b = c;
         }
-        return dp[n];
+        return c;
     }
-    //进一步将有限的三个状态用三个Int来存储——状态压缩；减少空间消耗；
-    
 };
 // @lc code=end
 
