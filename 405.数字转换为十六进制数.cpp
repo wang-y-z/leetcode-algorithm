@@ -9,7 +9,7 @@ class Solution {
 public:
     string toHex(int num) {
         // string res;
-        stringstream ioss; //定义字bai符串流du
+        stringstream ioss; //定义字符串流
         string s_temp; //存放转化后字符
         ioss << std::hex << num; //以十六制zhi形式输出
         ioss >> s_temp;

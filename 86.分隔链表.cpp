@@ -16,10 +16,10 @@
 class Solution {
 public:
     ListNode* partition(ListNode* head, int x) {
-        ListNode* s = new ListNode(-1) , *h1 = s;
-        ListNode* l = new ListNode(-1) , *h2 = l;
-        while(head){
-            if(head->val < x){
+        ListNode* l = new ListNode(-1) , *h1 = l;
+        ListNode* r = new ListNode(-1) , *h2 = r;
+        while( head ){
+            if( head->val < x ){
                 h1->next = head;
                 h1 = h1->next;
             }else{
@@ -27,12 +27,10 @@ public:
                 h2 = h2->next;
             }
             head = head->next;
-        }
-        h1->next = NULL;
-        h2->next = NULL;
-        h1->next = l->next;
-
-        return s->next;
+        }        
+        h1->next = r->next;
+        h2->next = nullptr;
+        return l->next;
     }
 };
 // @lc code=end
