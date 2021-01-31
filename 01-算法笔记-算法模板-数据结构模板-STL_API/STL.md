@@ -40,16 +40,53 @@ stack, 栈
 
 ```C++
 priority_queue, 优先队列，默认是大根堆
-	push()  插入一个元素
+    empty() 判断为空
+	push(k)  插入一个元素
 	top()  返回堆顶元素
 	pop()  弹出堆顶元素
 	定义成小根堆的方式：priority_queue<int, vector<int>, greater<int>> q;
+	默认是less<int>;
 ```
+
+<>中三个参数分别表示：元素类型、容器类型、比较函数（greater从大到小，less从小到大）
+
+- 技巧：
+  - 可以考虑使用负数来巧妙使用less的默认值；
+  - 可以自定义cmp函数；
+  - 可以使用Lambda表达式；
 
 其实就是堆，默认是大根堆，小根堆可以直接这样写`priority_queue,greater> q;`
 
 > greater的作用可以这样记：当想要反转STL容器的比较方式时就可以传入这个参数
 > 为了方便最好还是直接记住，如果不想记，可以每次将插入的数都变成他的相反数（大小关系就反过来了，变相处理成小根堆），取出的时候 再乘个-1变回来就行
+>
+> 在《STL源码剖析》中给出的定义是：priorty_queue是以个带权值观念的queue，它允许加入新元素，移除旧元素，审视元素值等功能。 
+
+```C++
+vector<int> topKFrequent(vector<int>& nums, int k) {
+        //hash+优先队列
+        //缺省情况下priority_queue利用max-heap（大顶堆）完
+        //成对元素的排序，这个大顶堆是以vector为表现形式的
+        //complete binary tree（完全二叉树）。
+        vector<int> res;
+        unordered_map<int, int> count;
+        priority_queue<pair<int, int >> pq;//优先队列的应用
+        for(auto n : nums){
+            count[n]++;
+        }
+        for(auto p : count){
+            pq.push(make_pair(-p.second, p.first));
+            if(pq.size() > k) pq.pop();
+        }
+        while( k-- ){
+            res.push_back(pq.top().second);
+            pq.pop();
+        }
+        return res;
+    }
+```
+
+
 
 ## deque
 

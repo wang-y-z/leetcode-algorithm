@@ -8,7 +8,10 @@
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
-        //hash
+        //hash+优先队列
+        //缺省情况下priority_queue利用max-heap（大顶堆）完
+        //成对元素的排序，这个大顶堆是以vector为表现形式的
+        //complete binary tree（完全二叉树）。
         vector<int> res;
         unordered_map<int, int> count;
         priority_queue<pair<int, int >> pq;//优先队列的应用
