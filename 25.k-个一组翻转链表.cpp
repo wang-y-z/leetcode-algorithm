@@ -17,8 +17,29 @@
  */
 class Solution {
 public:
+    //此题递归很有韵味
+    ListNode* reverseab(ListNode* a, ListNode* b){
+        ListNode* pre = nullptr;
+        ListNode* cur = a;
+        ListNode* nxt = b;
+        while( cur != b ){
+            nxt = cur->next;
+            cur->next = pre;
+            pre = cur;
+            cur = nxt;
+        }
+        return pre;
+    }
     ListNode* reverseKGroup(ListNode* head, int k) {
-        
+        ListNode* a = head;
+        ListNode* b = head;
+        for(int i = 0 ; i< k ; i++){
+            if(b == nullptr) return head;
+            b = b->next;
+        }
+        ListNode* newHead = reverseab(a,b);
+        a->next = reverseKGroup(b,k);
+        return newHead;
     }
 };
 // @lc code=end
