@@ -22,18 +22,32 @@
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-        if(nums.size() == 0) return 0;
-        int l = 0 ;
-        int r = 1 ;
-        while(r < nums.size() ){
-            if(nums[l] == nums[r] ){
-                r++;
-            }else{
-                l++;
-                nums[l] = nums[r];
-            }
+        //01
+        // if(nums.size() == 0) return 0;
+        // int l = 0 ;
+        // int r = 1 ;
+        // while(r < nums.size() ){
+        //     if(nums[l] == nums[r] ){
+        //         r++;
+        //     }else{
+        //         l++;
+        //         nums[l] = nums[r];
+        //     }
+        // }
+        // return l+1;
+
+        if(nums.size() == 0){
+            return 0 ;
         }
-        return l+1;
+        int slow = 0  , fast = 0;
+        while( fast<nums.size() ){
+            if(nums[fast] != nums[slow]){
+                slow++;
+                nums[slow] = nums[fast];
+            }
+            fast++;
+        }
+        return slow + 1;
     }
 };
 // @lc code=end
